@@ -2,23 +2,28 @@ import './App.css'
 import Kanban from './components/Kanban'
 import Todo from './components/Todo'
 import Popup from './components/Popup';
+import Counter from './components/Counter';
+import { useState } from 'react';
 
 
 function App() {
+  const [showPopup, setShowPopup] = useState(false);
+
   return (
     <>
+<Counter />
       <Kanban />
       <div className='add-task'>
         <input type="text" placeholder="Neuer Task..." onChange={(event) => {
           console.log(event.target.value)
         }} />
-        <button>Add Task</button>
+        <button onClick={() => setShowPopup(true)}>Add Task</button>
       </div>
       <Todo task="Müll rausbringen" />
       <Todo task="Mit Hund rausgehen" />
       <Todo task="Einkaufen" />
       <Todo task="Rechnung bezahlen" />
-      <Popup question="Möchten Sie diesen Task löschen?" />
+      {showPopup && <Popup question="Möchten Sie diesen Task löschen?" />}
     </>
   );
 }
