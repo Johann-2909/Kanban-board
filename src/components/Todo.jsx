@@ -1,4 +1,4 @@
-function Todo({ task }) {
+function Todo({ task, togglePopup }) {
   function handleClick() {
     alert(`Task "${task}" gelöscht!`);
   }
@@ -6,7 +6,7 @@ function Todo({ task }) {
   return (
     <div className="todo-item">
       <h2>{task}</h2>
-      <button onClick={handleClick}>Delete</button>
+      <button onClick={togglePopup}>Delete</button>
     </div>
   );
 }

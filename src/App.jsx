@@ -9,9 +9,18 @@ import { useState } from 'react';
 function App() {
   const [showPopup, setShowPopup] = useState(false);
 
+  function togglePopup() {
+    setShowPopup(true);
+  }
+
+  function closePopup() {
+    setShowPopup(false);
+  }
+
+
   return (
     <>
-<Counter />
+      <Counter />
       <Kanban />
       <div className='add-task'>
         <input type="text" placeholder="Neuer Task..." onChange={(event) => {
@@ -19,11 +28,11 @@ function App() {
         }} />
         <button onClick={() => setShowPopup(true)}>Add Task</button>
       </div>
-      <Todo task="Müll rausbringen" />
-      <Todo task="Mit Hund rausgehen" />
-      <Todo task="Einkaufen" />
-      <Todo task="Rechnung bezahlen" />
-      {showPopup && <Popup question="Möchten Sie diesen Task löschen?" />}
+      <Todo togglePopup={togglePopup} task="Müll rausbringen" />
+      <Todo togglePopup={togglePopup} task="Mit Hund rausgehen" />
+      <Todo togglePopup={togglePopup} task="Einkaufen" />
+      <Todo togglePopup={togglePopup} task="Rechnung bezahlen" />
+      {showPopup && <Popup closePopup={closePopup} question="Möchten Sie diesen Task löschen?" />}
     </>
   );
 }
