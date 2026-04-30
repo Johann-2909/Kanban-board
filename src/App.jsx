@@ -1,40 +1,23 @@
-import './App.css'
-import Kanban from './components/Kanban'
-import Todo from './components/Todo'
-import Popup from './components/Popup';
-import Counter from './components/Counter';
-import { useState } from 'react';
-
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import Posts from "./pages/Posts.jsx";
+import About from "./pages/About.jsx";
+import Contact from "./pages/Contact.jsx"
+import Nav from "./components/Nav.jsx";
+import Users from "./pages/Users.jsx"
 
 function App() {
-  const [showPopup, setShowPopup] = useState(false);
-
-  function togglePopup() {
-    setShowPopup(true);
-  }
-
-  function closePopup() {
-    setShowPopup(false);
-  }
-
-
   return (
     <>
-      <Counter />
-      <Kanban />
-      <div className='add-task'>
-        <input type="text" placeholder="Neuer Task..." onChange={(event) => {
-          console.log(event.target.value)
-        }} />
-        <button onClick={() => setShowPopup(true)}>Add Task</button>
-      </div>
-      <Todo togglePopup={togglePopup} task="Müll rausbringen" />
-      <Todo togglePopup={togglePopup} task="Mit Hund rausgehen" />
-      <Todo togglePopup={togglePopup} task="Einkaufen" />
-      <Todo togglePopup={togglePopup} task="Rechnung bezahlen" />
-      {showPopup && <Popup closePopup={closePopup} question="Möchten Sie diesen Task löschen?" />}
+      <Router>
+        <Nav />
+        <Routes>
+          <Route path="/"  />
+          <Route path="/users/:username" element={<Users />} />
+        </Routes>
+      </Router>
     </>
   );
 }
 
-export default App
+export default App;
