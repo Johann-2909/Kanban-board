@@ -12,7 +12,7 @@ function App() {
       <Router>
         <Nav />
         <Routes>
-          <Route path="/"  />
+          <Route path="/" />
           <Route path="/users/:username" element={<Users />} />
         </Routes>
       </Router>
