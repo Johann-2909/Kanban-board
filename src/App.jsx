@@ -1,22 +1,16 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import Posts from "./pages/Posts.jsx";
-import About from "./pages/About.jsx";
-import Contact from "./pages/Contact.jsx"
-import Home from "./pages/Home.jsx";
-import Nav from "./components/Nav.jsx";
-import Users from "./pages/Users.jsx"
+import Todo from "./components/Todo";
+import InProgress from "./components/InProgress";
+import Examination from "./components/Examination";
+import Done from "./components/Done";
 
 function App() {
   return (
     <>
-      <Router>
-        <Nav />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/users/:id" element={<Users />} />
-        </Routes>
-      </Router>
+      <Todo />
+      <InProgress />
+      <Examination />
+      <Done />
     </>
   );
 }
