@@ -1,16 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Column from "./Column";
 import AddTask from "./AddTask";
 import { DragDropContext } from "@hello-pangea/dnd";
 
 function Board() {
-  const [tasks, setTasks] = useState([
-    { id: 1, title: "Task 1", description: "...", column: "todo" },
-    { id: 2, title: "Task 2", description: "...", column: "inprogress" },
-  ]);
+  const [tasks, setTasks] = useState(
+    JSON.parse(localStorage.getItem("tasks")) || [
+      { id: 1, title: "Task 1", description: "...", column: "todo" },
+      { id: 2, title: "Task 2", description: "...", column: "inprogress" },
+    ],
+  );
   const todoTasks = tasks.filter((task) => task.column === "todo");
   const inProgressTasks = tasks.filter((task) => task.column === "inprogress");
   const doneTasks = tasks.filter((task) => task.column === "done");
+
 
   function addTask(title, description, column) {
     const newTask = {
@@ -43,6 +46,10 @@ function Board() {
     if (source.droppableId === destination.droppableId) return;
     moveTask(parseInt(draggableId), destination.droppableId);
   }
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
