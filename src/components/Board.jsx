@@ -14,7 +14,6 @@ function Board() {
   const inProgressTasks = tasks.filter((task) => task.column === "inprogress");
   const doneTasks = tasks.filter((task) => task.column === "done");
 
-
   function addTask(title, description, column) {
     const newTask = {
       id: Date.now(),
@@ -24,6 +23,7 @@ function Board() {
     };
     setTasks([...tasks, newTask]);
   }
+
 
   function deleteTask(id) {
     setTasks(tasks.filter((task) => task.id !== id));
@@ -53,8 +53,10 @@ function Board() {
 
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
-      <div className="board">
+      <header>
         <h1>Kanban Board</h1>
+      </header>
+      <div className="board">
         <Column
           title="To Do"
           columnId="todo"
