@@ -14,6 +14,7 @@ function AddTask({ addTask, columnId }) {
     addTask(title, description, columnId);
     setTitle("");
     setDescription("");
+    setIsOpen(false);
   };
 
   return (
