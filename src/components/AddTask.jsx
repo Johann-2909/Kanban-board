@@ -34,6 +34,9 @@ function AddTask({ addTask, columnId }) {
             onChange={(e) => setDescription(e.target.value)}
           ></textarea>
           <button type="submit">Add</button>
+          <button type="button" onClick={toggleAddTask}>
+            Cancel
+          </button>
         </form>
       ) : (
         <button onClick={toggleAddTask}>+</button>
