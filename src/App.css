@@ -8,6 +8,7 @@
     --white: #f5f5f5;
     --gray: #e2e8f0;
     --card-bg: #2f2f2f;
+    --red: #e53e3e;
 }
 
 * {
@@ -102,6 +103,15 @@ body {
     background-color: var(--dark-blue);
 }
 
+.add-task .cancel-btn {
+    background-color: var(--gray);
+    color: var(--black);
+}
+
+.add-task .cancel-btn:hover {
+    background-color: #cbd5e0;
+}
+
 .add-task input,
 .add-task textarea {
     width: 100%;
@@ -111,8 +121,8 @@ body {
     border-radius: 4px;
 }
 
-.card button {
-    background-color: var(--blue);
+.card .delete-btn {
+    background-color: var(--red);
     border: none;
     color: var(--white);
     padding: 5px 10px;

@@ -19,9 +19,9 @@ function AddTask({ addTask, columnId }) {
 
   return (
     <div className="add-task">
-      <h4>Add Task</h4>
       {isOpen ? (
         <form onSubmit={handleSubmit}>
+          <h4>Add Task</h4>
           <input
             type="text"
             placeholder="Title"
@@ -34,7 +34,7 @@ function AddTask({ addTask, columnId }) {
             onChange={(e) => setDescription(e.target.value)}
           ></textarea>
           <button type="submit">Add</button>
-          <button type="button" onClick={toggleAddTask}>
+          <button type="button" onClick={toggleAddTask} className="cancel-btn">
             Cancel
           </button>
         </form>

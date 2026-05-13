@@ -12,7 +12,9 @@ function Card({ title, description, deleteTask, id, index }) {
           <div className="card">
             <h3>{title}</h3>
             <p>{description}</p>
-            <button onClick={() => deleteTask(id)}>Delete</button>
+            <button onClick={() => deleteTask(id)} className="delete-btn">
+              Delete
+            </button>
           </div>
         </div>
       )}
